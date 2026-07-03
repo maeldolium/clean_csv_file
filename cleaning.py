@@ -19,3 +19,15 @@ def normalize_phone(phone) -> str:
         return str(phone).strip()
 
     return " ".join(digits[i:i + 2] for i in range(0, 10, 2))
+
+
+def format_name(name) -> str:
+    """Format a name part (first or last name) with proper casing.
+
+    Handles hyphens and apostrophes as separate word boundaries so
+    "jean-pierre" and "d'ascq" capitalize correctly.
+    """
+    if not name:
+        return ""
+    parts = re.split(r"([-'\s]+)", str(name).strip().lower())
+    return "".join(part.capitalize() if part.strip("-' ") else part for part in parts)
