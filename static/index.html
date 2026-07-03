@@ -18,6 +18,8 @@
     </form>
 
     <section id="results" class="hidden mt-8 w-full max-w-5xl mx-auto px-4">
+        <p id="summaryMessage" class="mb-4 font-medium text-green-700"></p>
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
                 <h2 class="text-lg font-semibold mb-2">Avant</h2>
@@ -28,6 +30,8 @@
                 <div id="afterTable" class="overflow-x-auto border rounded"></div>
             </div>
         </div>
+
+        <button id="downloadBtn" type="button" class="mt-6 bg-green-600 text-white px-4 py-2 rounded">Télécharger le fichier</button>
     </section>
 
     <script src="/static/main.js"></script>

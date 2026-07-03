@@ -1,8 +1,10 @@
 let form = document.getElementById("csvForm");
 let input = document.getElementById("csvFile");
 let results = document.getElementById("results");
+let summaryMessage = document.getElementById("summaryMessage");
 let beforeTable = document.getElementById("beforeTable");
 let afterTable = document.getElementById("afterTable");
+let downloadBtn = document.getElementById("downloadBtn");
 
 function renderTable(container, rows) {
     container.innerHTML = "";
@@ -68,5 +70,36 @@ form.addEventListener("submit", async function (event) {
 
     renderTable(beforeTable, data.before);
     renderTable(afterTable, data.after);
+    summaryMessage.textContent =
+        `${data.stats.duplicates_removed} doublons supprimés, ${data.stats.phones_reformatted} numéros reformatés`;
     results.classList.remove("hidden");
+});
+
+downloadBtn.addEventListener("click", async function () {
+    let file = input.files[0];
+    if (!file) {
+        console.log("No file selected");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("csvFile", file);
+    const response = await fetch("/download", {
+        method: "POST",
+        body: formData,
+    });
+
+    if (!response.ok) {
+        const data = await response.json();
+        alert(data.error || "Erreur lors du téléchargement.");
+        return;
+    }
+
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "contacts_nettoyes.csv";
+    link.click();
+    URL.revokeObjectURL(url);
 });
