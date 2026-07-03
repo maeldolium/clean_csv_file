@@ -16,6 +16,20 @@
         <input type="file" id="csvFile" accept=".csv" class="mb-4">
         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Nettoyage</button>
     </form>
+
+    <section id="results" class="hidden mt-8 w-full max-w-5xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <h2 class="text-lg font-semibold mb-2">Avant</h2>
+                <div id="beforeTable" class="overflow-x-auto border rounded"></div>
+            </div>
+            <div>
+                <h2 class="text-lg font-semibold mb-2">Après</h2>
+                <div id="afterTable" class="overflow-x-auto border rounded"></div>
+            </div>
+        </div>
+    </section>
+
     <script src="/static/main.js"></script>
 
 </body>
