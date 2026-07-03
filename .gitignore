@@ -1,0 +1,61 @@
+# --- Secrets & config ---
+.env
+.env.*
+!.env.example
+
+# --- Python / Flask ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Flask
+instance/
+.flaskenv
+
+# Tests / coverage / typing
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# --- Node / React (if JS frontend) ---
+node_modules/
+.npm/
+build/
+dist/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- User data (contacts, uploaded/processed files) ---
+# These CSVs may contain real personal data (name, email, phone):
+# never commit them, including during local testing.
+*.csv
+!sample*.csv
+!example*.csv
+uploads/
+outputs/
+data/
+
+# --- Editor / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- Misc ---
+*.log
+.cache/
