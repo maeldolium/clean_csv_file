@@ -56,9 +56,10 @@ def download():
 
     cleaned_df, _ = clean_dataframe(df)
 
+    # ";" separator is used to export CSVs in Franch Excel
     # BOM so Excel on Windows (the client's likely tool) detects UTF-8
     # instead of showing garbled accents.
-    buffer = io.BytesIO(cleaned_df.to_csv(index=False).encode('utf-8-sig'))
+    buffer = io.BytesIO(cleaned_df.to_csv(index=False, sep=';').encode('utf-8-sig'))
 
     return send_file(
         buffer,
