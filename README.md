@@ -35,5 +35,12 @@ Flask (serveur web)
 HTML/CSS ou React
 Hébergement: Render
 
+## Installation et lancement en local
+```bash
+python -m venv venv
+venv\Scripts\activate      # Windows
+pip install -r requirements.txt
+python app.py
+```
 
 

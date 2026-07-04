@@ -1,4 +1,5 @@
 import io
+import os
 
 from flask import Flask, request, jsonify, send_file, send_from_directory
 import pandas as pd
@@ -70,4 +71,4 @@ def download():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=os.environ.get("FLASK_DEBUG") == "1")
